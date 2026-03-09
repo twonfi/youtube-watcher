@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: Outfit, sans-serif;
+}
+
+iframe {
+    border: 0;
+    margin: 0;
+    width: 100%;
+    height: 99.5vh;
+}
+
+input, button {
+    font-family: Outfit, sans-serif;
+}
+
+button, input {
+    background-color: #222;
+    color: white;
+    border: solid white 1px;
+    border-radius: 3px;
+}
+
+button:active {
+    background-color: white;
+    color: black;
+}
+
+#controls {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    padding: 5px;
+    background-color: black;
+    border-radius: 5px;
+    opacity: 30%;
+}
+#controls:hover, #controls:focus, #controls:has(:focus) {
+    opacity: 80%;
+}
+
+#controls:has(#controls-hideable) #controls-hide:active {
+    cursor: w-resize;
+}
+#controls:has(#controls-hideable[hidden]) #controls-hide:active {
+    cursor: e-resize;
+}
