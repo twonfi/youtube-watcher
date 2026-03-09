@@ -4,7 +4,7 @@ const YOUTUBE_VIDEO_ID_REGEX = /^[A-Za-z0-9-_]{11}$/;
 const URL_PARAMS = new URLSearchParams(window.location.search);
 
 globalThis.videoId = (URL_PARAMS.get('v') && YOUTUBE_VIDEO_ID_REGEX.test(URL_PARAMS.get('v'))) ? URL_PARAMS.get('v') : 'aqz-KE-bpKQ';
-frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}`);
+frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}?autoplay=1&rel=0`);
 document.getElementById('url').value = globalThis.videoId;
 
 document.getElementById('controls-hide').addEventListener('click', () => {
