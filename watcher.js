@@ -43,7 +43,7 @@ function updateYouTubeEmbed() {
         }
 
         input.value = globalThis.videoId;
-        frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}?autoplay=1`);
+        frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}?autoplay=1&rel=0`);
 
         const pageUrl = new URL(window.location.href);
         pageUrl.searchParams.set('v', globalThis.videoId);
