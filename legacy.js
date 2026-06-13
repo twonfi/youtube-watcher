@@ -2,50 +2,18 @@
 
 const YOUTUBE_VIDEO_ID_REGEX = /^[A-Za-z0-9-_]{11}$/;
 const URL_PARAMS = new URLSearchParams(window.location.search);
-const BIG_BUCK_BUNNY = 'aqz-KE-bpKQ';
 
-globalThis.videoId = (URL_PARAMS.get('v') && YOUTUBE_VIDEO_ID_REGEX.test(URL_PARAMS.get('v'))) ? URL_PARAMS.get('v') : BIG_BUCK_BUNNY;
+globalThis.videoId = (URL_PARAMS.get('v') && YOUTUBE_VIDEO_ID_REGEX.test(URL_PARAMS.get('v'))) ? URL_PARAMS.get('v') : 'aqz-KE-bpKQ';
+frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}?autoplay=1&rel=0`);
 document.getElementById('url').value = globalThis.videoId;
 
 document.getElementById('controls-hide').addEventListener('click', () => {
     document.getElementById('controls-hideable').toggleAttribute('hidden');
 });
 
-let scriptTag = document.createElement('script');
-scriptTag.src = 'https://www.youtube.com/iframe_api';
-
-let firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(scriptTag, firstScriptTag);
-
-globalThis.player = null;
-function onYouTubeIframeAPIReady() {
-    globalThis.player = new YT.Player('player', {
-        host: 'https://www.youtube-nocookie.com',
-        height: '640',
-        width: '480',
-        videoId: globalThis.videoId,
-        playerVars: {
-            'playsinline': 1
-            },
-        events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-        }
-    });
-}
-
-function onPlayerReady(event) {
-    event.target.playVideo();
-}
-
-function onPlayerStateChange(event) {
-    if (event.data == YT.PlayerState.PLAYING) {
-        document.title = globalThis.player.videoTitle + ' – watcher.twonum';
-    }
-}
-
 function updateYouTubeEmbed() {
     try {
+        const frame = document.getElementById('frame');
         const input = document.getElementById('url');
         const inputValue = document.getElementById('url').value;
 
@@ -75,7 +43,7 @@ function updateYouTubeEmbed() {
         }
 
         input.value = globalThis.videoId;
-        player.loadVideoById({ videoId: globalThis.videoId, startSeconds: 0 });
+        frame.setAttribute('src', `https://www.youtube-nocookie.com/embed/${globalThis.videoId}?autoplay=1&rel=0`);
 
         const pageUrl = new URL(window.location.href);
         pageUrl.searchParams.set('v', globalThis.videoId);

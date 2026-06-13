@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="legacy">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>watcher.twonum</title>
+    <title>[Legacy mode] &ndash; watcher.twonum</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="index.css">
     <link href="https://twonum.org/_f/Outfit/1.css" rel="stylesheet" integrity="sha512-M+KY+VRjfG2n8vhjZ4Qw+++aELqpDFlevb2c8sfXJwdHuRWDRjGnLFwjjbYdSgc6w6U0RnwS8Lxx6k1SrW8tjg==" crossorigin>
@@ -15,12 +15,18 @@
             <label for="url">URL/ID</label>
             <input id="url" type="text" value="aqz-KE-bpKQ">
             <button id="go" type="button">Go!</button>
-            <span id="legacy-message">[<a href="/legacy.html">Legacy</a> (debug)]</span>
+            <span id="legacy-message">[Legacy! <a href="/">New</a>]</span>
         </span>
     </div>
 
-    <div id="player"></div>
+    <iframe
+        id="frame"
+        src="about:blank"
+        title="Player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
 
-    <script src="watcher.js"></script>
+    <script src="legacy.js"></script>
 </body>
 </html>
